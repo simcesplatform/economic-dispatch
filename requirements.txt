@@ -1,0 +1,4 @@
+pyomo==5.7.1
+aio_pika==6.6.1
+aiounittest==1.4.0
+isodate==0.6.0

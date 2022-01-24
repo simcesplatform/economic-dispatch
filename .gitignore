@@ -1,0 +1,6 @@
+**/__pycache__
+**/*.pyc
+.vscode
+logfile.log
+logs/*.log
+**/_simple*.py

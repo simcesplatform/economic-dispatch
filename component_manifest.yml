@@ -1,0 +1,77 @@
+Name: EconomicDispatch
+Type: platform
+Description: "Economic Dispatch component for the SimCes Platform"
+DockerImage: ghcr.io/simcesplatform/economic_dispatch
+Attributes:
+    Resources:
+        Environment: RESOURCES
+        Optional: false
+    Horizon:
+        Environment: DISPATCH_HORIZON
+        Optional: true
+        Default: "PT36H"
+    Timestep:
+        Environment: DISPATCH_TIMESTEP
+        Optional: true
+        Default: "PT1H"
+    Solver:
+        Environment: DISPATCH_SOLVER
+        Optional: true
+        Default: "glpk"
+    DispatchTopic:
+        Environment: DISPATCH_TOPIC
+        Optional: true
+        Default: "ResourceForecastState"
+    ResourceType:
+        Environment: RESOURCE_TYPE
+        Optional: true
+        Default: "Dispatch"
+    ParticipatingMarketId:
+        Environment: MARKET_ID
+        Optional: true
+        Default: null
+    ResourceForecastTopic:
+        Environment: RESOURCE_FORECAST_TOPIC
+        Optional: true
+        Default: "ResourceForecastState.Load,ResourceForecastState.Generator"
+    PriceForecastStateTopic:
+        Environment: PRICE_FORECAST_STATE_TOPIC
+        Optional: true
+        Default: "PriceForecastState"
+    ResourceStateTopic:
+        Environment: RESOURCE_STATE_TOPIC
+        Optional: true
+        Default: "ResourceState.Storage"
+    StatusTopic:
+        Environment: STATUS_TOPIC
+        Optional: true
+        Default: "Status.Ready"
+    LFMResultTopic:
+        Environment: LFM_RESULT_TOPIC
+        Optional: true
+        Default: "LFMMarketResult"
+    RequestTopic:
+        Environment: REQUEST_TOPIC
+        Optional: true
+        Default: "Request"
+    OfferTopic:
+        Environment: OFFER_TOPIC
+        Optional: true
+        Default: "Offer"
+    CustomerInfoTopic:
+        Environment: CUSTOMER_INFO_TOPIC
+        Optional: true
+        Default: "Init.CIS.CustomerInfo"
+    CommitmentTime:
+        Environment: COMMITMENT_TIME
+        Optional: true
+        Default: null
+    SkipOpenOffers:
+        Environment: SKIP_OPEN_OFFERS
+        Optional: true
+        Default: null
+    Weights:
+        Environment: WEIGHTS
+        Optional: true
+        Default: null
+

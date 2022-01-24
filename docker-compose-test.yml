@@ -1,0 +1,80 @@
+version: '3.5'
+
+services:
+
+  rabbitmq:
+    image: rabbitmq:3.8.4-management
+    container_name: rabbitmq_edtest
+    restart: always
+    logging:
+      driver: "none"
+    expose:
+      - "5672"
+    environment:
+      - RABBITMQ_EXCHANGE=procem.edtest,procem.flextest,procem.committest
+
+
+#  economic_dispatch:
+#    build:
+#      context: .
+#      dockerfile: Dockerfile
+#    restart: "no"
+#    command: ["python3", "-u", "-m", "unittest", "economic_dispatch/simulation/tests/test_sim_component.py"]
+#    depends_on:
+#      - rabbitmq
+#    environment:
+#      - SIMULATION_LOG_FILE=logs/logfile_static.log
+#      - SIMULATION_LOG_LEVEL=10
+#      - RABBITMQ_HOST=rabbitmq_edtest
+#      - RABBITMQ_PORT=5672
+#      - RABBITMQ_SSL=false
+#      - RABBITMQ_EXCHANGE=procem.edtest
+#      - RABBITMQ_EXCHANGE_AUTODELETE=false
+#      - RABBITMQ_EXCHANGE_DURABLE=false
+#    volumes:
+#      - simulation_logs:/logs
+
+  economic_dispatch2:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: "no"
+    command: ["python3", "-u", "-m", "unittest", "economic_dispatch/simulation/tests/test_flex_component.py"]
+    depends_on:
+      - rabbitmq
+    environment:
+      - SIMULATION_LOG_FILE=logs/logfile_static.log
+      - SIMULATION_LOG_LEVEL=10
+      - RABBITMQ_HOST=rabbitmq_edtest
+      - RABBITMQ_PORT=5672
+      - RABBITMQ_SSL=false
+      - RABBITMQ_EXCHANGE=procem.flextest
+      - RABBITMQ_EXCHANGE_AUTODELETE=false
+      - RABBITMQ_EXCHANGE_DURABLE=false
+    volumes:
+      - simulation_logs:/logs
+
+#  economic_dispatch3:
+#    build:
+#      context: .
+#      dockerfile: Dockerfile
+#    restart: "no"
+#    command: ["python3", "-u", "-m", "unittest", "economic_dispatch/simulation/tests/test_sim_commitments_component.py"]
+#    depends_on:
+#      - rabbitmq
+#    environment:
+#      - SIMULATION_LOG_FILE=logs/logfile_static.log
+#      - SIMULATION_LOG_LEVEL= 10
+#      - RABBITMQ_HOST=rabbitmq_edtest
+#      - RABBITMQ_PORT=5672
+#      - RABBITMQ_SSL=false
+#      - RABBITMQ_EXCHANGE=procem.committest
+#      - RABBITMQ_EXCHANGE_AUTODELETE=false
+#      - RABBITMQ_EXCHANGE_DURABLE=false
+#    volumes:
+#      - simulation_logs:/logs
+
+volumes:
+  simulation_logs:
+    name: simulation_logs_economic_dispatch_test
+

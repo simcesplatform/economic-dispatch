@@ -1,0 +1,49 @@
+{
+    "name": "ed-test",
+    "horizon": 24,
+    "network": {
+        "name": "Network1",
+        "buses": [
+            {
+                "name": "Bus0",
+                "units": [
+                    {
+                        "component_key": "staticunit",
+                        "name": "Demand"
+                    },
+                    {
+                        "component_key": "market",
+                        "name": "ElectricityMarket"
+                    }
+                ]
+            },
+            {
+                "name": "Bus1",
+                "units": [
+                    {
+                        "component_key": "storage",
+                        "name": "Battery",
+                        "capacity": 2.0,
+                        "max_power": 1.0
+                    },
+                    {
+                        "component_key": "staticunit",
+                        "name": "CHP"
+                    },
+                    {
+                        "component_key": "staticunit",
+                        "name": "Solar"
+                    }
+                ]
+            }
+        ],
+        "lines": [
+            {
+                "name": "L1",
+                "b0": "Bus0",
+                "b1": "Bus1",
+                "reactance": 1.0
+            }
+        ]
+    }
+    }

@@ -1,0 +1,22 @@
+{
+    "units": [
+        {
+            "component_key": "storage",
+            "name": "Battery",
+            "capacity": 100.0,
+            "max_power": 10.0
+        },
+        {
+            "component_key": "staticunit",
+            "name": "CHP"
+        },
+        {
+            "component_key": "staticunit",
+            "name": "Demand"
+        },
+        {
+            "component_key": "market",
+            "name": "ElectricityMarket"
+        }
+    ]
+}
